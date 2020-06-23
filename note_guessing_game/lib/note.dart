@@ -17,6 +17,23 @@ enum NoteType {
   gSharp,
 }
 
+extension Name on NoteType {
+  String get name => const {
+        NoteType.a: "A",
+        NoteType.aSharp: "A#",
+        NoteType.b: "B",
+        NoteType.c: "C",
+        NoteType.cSharp: "C#",
+        NoteType.d: "D",
+        NoteType.dSharp: "D#",
+        NoteType.e: "E",
+        NoteType.f: "F",
+        NoteType.fSharp: "F#",
+        NoteType.g: "G",
+        NoteType.gSharp: "G#",
+      }[this];
+}
+
 class Note {
   final String fileName;
   final String name;
@@ -42,6 +59,4 @@ class Note {
   });
 }
 
-const notes = [
-  
-];
+const notes = [];
