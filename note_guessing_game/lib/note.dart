@@ -18,20 +18,23 @@ enum NoteType {
 }
 
 extension Name on NoteType {
-  String get name => const {
-        NoteType.a: "A",
-        NoteType.aSharp: "A#",
-        NoteType.b: "B",
-        NoteType.c: "C",
-        NoteType.cSharp: "C#",
-        NoteType.d: "D",
-        NoteType.dSharp: "D#",
-        NoteType.e: "E",
-        NoteType.f: "F",
-        NoteType.fSharp: "F#",
-        NoteType.g: "G",
-        NoteType.gSharp: "G#",
-      }[this];
+   String get name {
+      switch (this) {
+          case NoteType.a: return "A";
+          case NoteType.aSharp: return "A#";
+          case NoteType.b: return "B";
+          case NoteType.c: return "C";
+          case NoteType.cSharp: return "C#";
+          case NoteType.d: return "D";
+          case NoteType.dSharp: return "D#";
+          case NoteType.e: return "E";
+          case NoteType.f: return "F";
+          case NoteType.fSharp: return "F#";
+          case NoteType.g: return "G";
+          case NoteType.gSharp: return "G#";
+          default: return "";
+      }
+  }
 }
 
 class Note {
