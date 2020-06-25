@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'game_screen.dart';
+import 'title_widget.dart';
 
 class SplashScreen extends StatelessWidget {
   @override
@@ -7,12 +8,7 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 10.0,
-        title: Text(
-          "🎸",
-          style: TextStyle(
-            fontSize: 45.0,
-          ),
-        ),
+        title: TitleWidget(),
       ),
       body: Center(
         child: RaisedButton(

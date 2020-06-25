@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'title_widget.dart';
 
 class GameScreen extends StatefulWidget {
   @override
@@ -8,6 +9,10 @@ class GameScreen extends StatefulWidget {
 class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: TitleWidget()
+      ),
+    );
   }
 }
