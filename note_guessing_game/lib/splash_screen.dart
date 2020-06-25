@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'game_screen.dart';
 
-class Splash extends StatelessWidget {
+class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +25,10 @@ class Splash extends StatelessWidget {
               ),
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => GameScreen()));
+          },
         ),
       ),
     );

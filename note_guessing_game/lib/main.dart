@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'splash.dart';
+import 'screens.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +15,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Splash(),
+      routes: {
+        Screen.splash.id: (context) => Screen.splash.instance,
+        Screen.game.id: (context) => Screen.game.instance,
+      },
+      initialRoute: Screen.splash.id,
     );
   }
 }
