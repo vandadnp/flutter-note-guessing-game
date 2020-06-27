@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noteguessinggame/difficulty.dart';
 import 'package:noteguessinggame/game_timer.dart';
 import 'title_widget.dart';
 import 'note.dart';
@@ -12,6 +13,7 @@ class _GameScreenState extends State<GameScreen> {
   
   GameTimer gameTimer = GameTimer();
   Note currentNote;
+  Difficulty difficulty;
   
   @override
   void dispose() {
@@ -21,15 +23,22 @@ class _GameScreenState extends State<GameScreen> {
   }
   
   @override
-  void initState() {
+  Widget build(BuildContext context) {
+  
+    // set difficulty
+    Difficulty difficulty = ModalRoute.of(context).settings.arguments;
+    if (difficulty != null) {
+      this.difficulty = difficulty;
+    } else {
+      this.difficulty = Difficulty.beginner;
+    }
+    
+    print(this.difficulty);
+    
     gameTimer.start(seconds: 5, callback: () {
       print("timer");
     });
-    super.initState();
-  }
-  
-  @override
-  Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         title: TitleWidget()

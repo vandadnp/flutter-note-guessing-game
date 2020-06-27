@@ -8,6 +8,17 @@ enum Screen {
 }
 
 extension Routes on Screen {
+	
+	void push(BuildContext context, RouteSettings settings) {
+		Navigator.push(
+			context,
+			MaterialPageRoute(
+				builder: (context) => this.instance,
+				settings: settings
+			),
+		);
+	}
+	
 	String get id {
 		switch (this) {
 			case Screen.splash: return "splash";
