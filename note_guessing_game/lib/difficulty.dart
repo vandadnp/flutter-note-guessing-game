@@ -18,3 +18,14 @@ extension Name on Difficulty {
     }
   }
 }
+
+extension Buttons on Difficulty {
+  int get buttonsNeeded {
+    switch (this) {
+      case Difficulty.beginner: return 2;
+      case Difficulty.intermediate: return 4;
+      case Difficulty.expert: return 6;
+      default: return 0;
+    }
+  }
+}
