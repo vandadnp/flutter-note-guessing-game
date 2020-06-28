@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:noteguessinggame/game_screen.dart';
 import 'title_widget.dart';
-import 'screens.dart';
 import 'difficulty.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -68,11 +68,14 @@ class DifficultyButton extends StatelessWidget {
             ),
           ),
           onPressed: () {
-            Screen.game.push(
-                context,
-                RouteSettings(
-                  arguments: difficulty,
-                ));
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => GameScreen(
+                  difficulty: difficulty,
+                ),
+              ),
+            );
           },
         ),
       ),

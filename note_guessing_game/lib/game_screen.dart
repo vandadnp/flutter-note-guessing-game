@@ -5,15 +5,64 @@ import 'title_widget.dart';
 import 'note.dart';
 
 class GameScreen extends StatefulWidget {
+  final Difficulty difficulty;
+
+  const GameScreen({this.difficulty});
+
   @override
   _GameScreenState createState() => _GameScreenState();
 }
 
 class _GameScreenState extends State<GameScreen> {
-  
   GameTimer gameTimer = GameTimer();
   Note currentNote;
-  Difficulty difficulty;
+
+  void setupButtonsAndPlayRandomNote() {
+    List<Widget> widgets = [
+      Text(
+        "🔊",
+        style: TextStyle(fontSize: 50),
+      ),
+    ];
+
+    currentNote = Note.randomNote();
+
+    var noteTypesForButtons = currentNote.noteType
+        .noteTypesExcludingThis(widget.difficulty.buttonsNeeded);
+
+    var buttons = noteTypesForButtons
+        .map((e) => AnswerButton(
+            noteType: e,
+            onPressed: (noteType) {
+              processAnswer(noteType);
+            }))
+        .toList();
+
+    // for every two buttons create a row
+    for (var i = 0; i < buttons.length; i += 2) {
+      var twoButtons = buttons.sublist(i, i + 2);
+      var row = AnswerRow(buttons: twoButtons);
+      widgets.add(row);
+    }
+
+    setState(() {
+      columnChildren = widgets;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    gameTimer.start(
+        seconds: 5,
+        callback: () {
+          if (!mounted) {
+            return;
+          }
+          setupButtonsAndPlayRandomNote();
+        });
+  }
 
   @override
   void dispose() {
@@ -25,59 +74,9 @@ class _GameScreenState extends State<GameScreen> {
   List<Widget> columnChildren = [];
 
   void processAnswer(NoteType noteType) {}
-  
-  void setupDifficulty(BuildContext context) {
-    difficulty = ModalRoute.of(context).settings.arguments;
-    if (difficulty == null) {
-      difficulty = Difficulty.beginner;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
-    
-    setupDifficulty(context);
-
-    gameTimer.start(
-        seconds: 5,
-          callback: () {
-          
-          if (!mounted) {
-            return;
-          }
-          
-          List<Widget> widgets = [
-            Text(
-              "🔊",
-              style: TextStyle(fontSize: 50),
-            ),
-          ];
-
-          currentNote = Note.randomNote();
-
-          var noteTypesForButtons = currentNote.noteType
-              .noteTypesExcludingThis(difficulty.buttonsNeeded);
-
-          var buttons = noteTypesForButtons
-              .map((e) => AnswerButton(
-                  noteType: e,
-                  onPressed: (noteType) {
-                    processAnswer(noteType);
-                  }))
-              .toList();
-
-          // for every two buttons create a row
-          for (var i = 0; i < buttons.length; i += 2) {
-            var twoButtons = buttons.sublist(i, i + 2);
-            var row = AnswerRow(buttons: twoButtons);
-            widgets.add(row);
-          }
-
-          setState(() {
-            columnChildren = widgets;
-          });
-        });
-
     return Scaffold(
       appBar: AppBar(title: TitleWidget()),
       body: Center(

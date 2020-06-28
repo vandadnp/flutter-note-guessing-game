@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens.dart';
+import 'package:noteguessinggame/splash_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,11 +16,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      routes: {
-        Screen.splash.id: (context) => Screen.splash.instance,
-        Screen.game.id: (context) => Screen.game.instance,
-      },
-      initialRoute: Screen.splash.id,
+      home: SplashScreen(),
     );
   }
 }
