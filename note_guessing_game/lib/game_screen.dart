@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:noteguessinggame/difficulty.dart';
 import 'package:noteguessinggame/game_timer.dart';
@@ -23,6 +25,8 @@ class _GameScreenState extends State<GameScreen> {
 
   List<Widget> columnChildren = [];
 
+  void processAnswer(NoteType noteType) {}
+
   @override
   Widget build(BuildContext context) {
     // set difficulty
@@ -42,8 +46,23 @@ class _GameScreenState extends State<GameScreen> {
               style: TextStyle(fontSize: 50),
             ),
           ];
+
+          currentNote = Note.randomNote();
+
+          var noteTypesForButtons = currentNote.noteType
+              .noteTypesExcludingThis(difficulty.buttonsNeeded);
+
+          var buttons = noteTypesForButtons
+              .map((e) => AnswerButton(
+                  noteType: e,
+                  onPressed: (noteType) {
+                    processAnswer(noteType);
+                  }));
           
-//          List<int>.generate(difficulty.buttonsNeeded, (index) => null)
+          // for every two buttons create a row
+          
+
+          widgets.addAll(buttons);
 
           setState(() {
             columnChildren = widgets;
@@ -57,9 +76,11 @@ class _GameScreenState extends State<GameScreen> {
   }
 }
 
+typedef AnswerCallback = void Function(NoteType noteType);
+
 class AnswerButton extends StatelessWidget {
   final NoteType noteType;
-  final VoidCallback onPressed;
+  final AnswerCallback onPressed;
 
   const AnswerButton({
     this.noteType,
@@ -70,7 +91,9 @@ class AnswerButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return RaisedButton(
       child: Text(noteType.name),
-      onPressed: onPressed,
+      onPressed: () {
+        onPressed(noteType);
+      },
     );
   }
 }

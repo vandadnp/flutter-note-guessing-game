@@ -1,4 +1,5 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
+import 'dart:math';
 
 var _player = AssetsAudioPlayer.newPlayer();
 
@@ -41,12 +42,11 @@ extension Shuffle on List {
 }
 
 extension Name on NoteType {
-  List<NoteType> noteTypesExcludingThis(int count) =>
-      _allNotes
-          .where((element) => element != this)
-          .take(count)
-          .toList()
-          .shuffled();
+  List<NoteType> noteTypesExcludingThis(int count) => _allNotes
+      .where((element) => element != this)
+      .take(count)
+      .toList()
+      .shuffled();
 
   String get name {
     switch (this) {
@@ -82,8 +82,10 @@ extension Name on NoteType {
 
 class Note {
   final String fileName;
-  final String name;
   final NoteType noteType;
+
+  static Random _rnd = Random();
+  static Note randomNote() => notes[_rnd.nextInt(notes.length)];
 
   void play() {
     _player.stop();
@@ -99,7 +101,6 @@ class Note {
   String path() => "$dir/$fileName";
 
   const Note({
-    this.name,
     this.fileName,
     this.noteType,
   });
@@ -109,4 +110,341 @@ class Note {
   }
 }
 
-const notes = [];
+const notes = [
+  Note(
+    fileName: "clean-A-1.wav",
+    noteType: NoteType.a,
+  ),
+  Note(
+    fileName: "clean-A-2.wav",
+    noteType: NoteType.a,
+  ),
+  Note(
+    fileName: "clean-A-3.wav",
+    noteType: NoteType.a,
+  ),
+  Note(
+    fileName: "clean-A-4.wav",
+    noteType: NoteType.a,
+  ),
+  Note(
+    fileName: "clean-A-5.wav",
+    noteType: NoteType.a,
+  ),
+  Note(
+    fileName: "clean-A-6.wav",
+    noteType: NoteType.a,
+  ),
+  Note(
+    fileName: "clean-A-7.wav",
+    noteType: NoteType.a,
+  ),
+  Note(
+    fileName: "clean-A#-1.wav",
+    noteType: NoteType.aSharp,
+  ),
+  Note(
+    fileName: "clean-A#-2.wav",
+    noteType: NoteType.aSharp,
+  ),
+  Note(
+    fileName: "clean-A#-3.wav",
+    noteType: NoteType.aSharp,
+  ),
+  Note(
+    fileName: "clean-A#-4.wav",
+    noteType: NoteType.aSharp,
+  ),
+  Note(
+    fileName: "clean-A#-5.wav",
+    noteType: NoteType.aSharp,
+  ),
+  Note(
+    fileName: "clean-A#-6.wav",
+    noteType: NoteType.aSharp,
+  ),
+  Note(
+    fileName: "clean-A#-7.wav",
+    noteType: NoteType.aSharp,
+  ),
+  Note(
+    fileName: "clean-B-1.wav",
+    noteType: NoteType.b,
+  ),
+  Note(
+    fileName: "clean-B-2.wav",
+    noteType: NoteType.b,
+  ),
+  Note(
+    fileName: "clean-B-3.wav",
+    noteType: NoteType.b,
+  ),
+  Note(
+    fileName: "clean-B-4.wav",
+    noteType: NoteType.b,
+  ),
+  Note(
+    fileName: "clean-B-5.wav",
+    noteType: NoteType.b,
+  ),
+  Note(
+    fileName: "clean-B-6.wav",
+    noteType: NoteType.b,
+  ),
+  Note(
+    fileName: "clean-B-7.wav",
+    noteType: NoteType.b,
+  ),
+  Note(
+    fileName: "clean-C-1.wav",
+    noteType: NoteType.c,
+  ),
+  Note(
+    fileName: "clean-C-2.wav",
+    noteType: NoteType.c,
+  ),
+  Note(
+    fileName: "clean-C-3.wav",
+    noteType: NoteType.c,
+  ),
+  Note(
+    fileName: "clean-C-4.wav",
+    noteType: NoteType.c,
+  ),
+  Note(
+    fileName: "clean-C-5.wav",
+    noteType: NoteType.c,
+  ),
+  Note(
+    fileName: "clean-C-6.wav",
+    noteType: NoteType.c,
+  ),
+  Note(
+    fileName: "clean-C-7.wav",
+    noteType: NoteType.c,
+  ),
+  Note(
+    fileName: "clean-C#-1.wav",
+    noteType: NoteType.cSharp,
+  ),
+  Note(
+    fileName: "clean-C#-2.wav",
+    noteType: NoteType.cSharp,
+  ),
+  Note(
+    fileName: "clean-C#-3.wav",
+    noteType: NoteType.cSharp,
+  ),
+  Note(
+    fileName: "clean-C#-4.wav",
+    noteType: NoteType.cSharp,
+  ),
+  Note(
+    fileName: "clean-C#-5.wav",
+    noteType: NoteType.cSharp,
+  ),
+  Note(
+    fileName: "clean-C#-6.wav",
+    noteType: NoteType.cSharp,
+  ),
+  Note(
+    fileName: "clean-C#-7.wav",
+    noteType: NoteType.cSharp,
+  ),
+  Note(
+    fileName: "clean-D-1.wav",
+    noteType: NoteType.d,
+  ),
+  Note(
+    fileName: "clean-D-2.wav",
+    noteType: NoteType.d,
+  ),
+  Note(
+    fileName: "clean-D-3.wav",
+    noteType: NoteType.d,
+  ),
+  Note(
+    fileName: "clean-D-4.wav",
+    noteType: NoteType.d,
+  ),
+  Note(
+    fileName: "clean-D-5.wav",
+    noteType: NoteType.d,
+  ),
+  Note(
+    fileName: "clean-D-6.wav",
+    noteType: NoteType.d,
+  ),
+  Note(
+    fileName: "clean-D-7.wav",
+    noteType: NoteType.d,
+  ),
+  Note(
+    fileName: "clean-D#-1.wav",
+    noteType: NoteType.dSharp,
+  ),
+  Note(
+    fileName: "clean-D#-2.wav",
+    noteType: NoteType.dSharp,
+  ),
+  Note(
+    fileName: "clean-D#-3.wav",
+    noteType: NoteType.dSharp,
+  ),
+  Note(
+    fileName: "clean-D#-4.wav",
+    noteType: NoteType.dSharp,
+  ),
+  Note(
+    fileName: "clean-D#-5.wav",
+    noteType: NoteType.dSharp,
+  ),
+  Note(
+    fileName: "clean-D#-6.wav",
+    noteType: NoteType.dSharp,
+  ),
+  Note(
+    fileName: "clean-D#-7.wav",
+    noteType: NoteType.dSharp,
+  ),
+  Note(
+    fileName: "clean-E-1.wav",
+    noteType: NoteType.e,
+  ),
+  Note(
+    fileName: "clean-E-2.wav",
+    noteType: NoteType.e,
+  ),
+  Note(
+    fileName: "clean-E-3.wav",
+    noteType: NoteType.e,
+  ),
+  Note(
+    fileName: "clean-E-4.wav",
+    noteType: NoteType.e,
+  ),
+  Note(
+    fileName: "clean-E-5.wav",
+    noteType: NoteType.e,
+  ),
+  Note(
+    fileName: "clean-E-6.wav",
+    noteType: NoteType.e,
+  ),
+  Note(
+    fileName: "clean-E-7.wav",
+    noteType: NoteType.e,
+  ),
+  Note(
+    fileName: "clean-F-1.wav",
+    noteType: NoteType.f,
+  ),
+  Note(
+    fileName: "clean-F-2.wav",
+    noteType: NoteType.f,
+  ),
+  Note(
+    fileName: "clean-F-3.wav",
+    noteType: NoteType.f,
+  ),
+  Note(
+    fileName: "clean-F-4.wav",
+    noteType: NoteType.f,
+  ),
+  Note(
+    fileName: "clean-F-5.wav",
+    noteType: NoteType.f,
+  ),
+  Note(
+    fileName: "clean-F-6.wav",
+    noteType: NoteType.f,
+  ),
+  Note(
+    fileName: "clean-F-7.wav",
+    noteType: NoteType.f,
+  ),
+  Note(
+    fileName: "clean-F#-1.wav",
+    noteType: NoteType.fSharp,
+  ),
+  Note(
+    fileName: "clean-F#-2.wav",
+    noteType: NoteType.fSharp,
+  ),
+  Note(
+    fileName: "clean-F#-3.wav",
+    noteType: NoteType.fSharp,
+  ),
+  Note(
+    fileName: "clean-F#-4.wav",
+    noteType: NoteType.fSharp,
+  ),
+  Note(
+    fileName: "clean-F#-5.wav",
+    noteType: NoteType.fSharp,
+  ),
+  Note(
+    fileName: "clean-F#-6.wav",
+    noteType: NoteType.fSharp,
+  ),
+  Note(
+    fileName: "clean-F#-7.wav",
+    noteType: NoteType.fSharp,
+  ),
+  Note(
+    fileName: "clean-G-1.wav",
+    noteType: NoteType.g,
+  ),
+  Note(
+    fileName: "clean-G-2.wav",
+    noteType: NoteType.g,
+  ),
+  Note(
+    fileName: "clean-G-3.wav",
+    noteType: NoteType.g,
+  ),
+  Note(
+    fileName: "clean-G-4.wav",
+    noteType: NoteType.g,
+  ),
+  Note(
+    fileName: "clean-G-5.wav",
+    noteType: NoteType.g,
+  ),
+  Note(
+    fileName: "clean-G-6.wav",
+    noteType: NoteType.g,
+  ),
+  Note(
+    fileName: "clean-G-7.wav",
+    noteType: NoteType.g,
+  ),
+  Note(
+    fileName: "clean-G#-1.wav",
+    noteType: NoteType.gSharp,
+  ),
+  Note(
+    fileName: "clean-G#-2.wav",
+    noteType: NoteType.gSharp,
+  ),
+  Note(
+    fileName: "clean-G#-3.wav",
+    noteType: NoteType.gSharp,
+  ),
+  Note(
+    fileName: "clean-G#-4.wav",
+    noteType: NoteType.gSharp,
+  ),
+  Note(
+    fileName: "clean-G#-5.wav",
+    noteType: NoteType.gSharp,
+  ),
+  Note(
+    fileName: "clean-G#-6.wav",
+    noteType: NoteType.gSharp,
+  ),
+  Note(
+    fileName: "clean-G#-7.wav",
+    noteType: NoteType.gSharp,
+  ),
+];
