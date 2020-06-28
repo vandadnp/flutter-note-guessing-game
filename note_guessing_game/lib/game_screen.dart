@@ -18,6 +18,7 @@ class _GameScreenState extends State<GameScreen> {
   Note currentNote;
 
   void setupButtonsAndPlayRandomNote() {
+    
     List<Widget> widgets = [
       Text(
         "🔊",
@@ -25,10 +26,17 @@ class _GameScreenState extends State<GameScreen> {
       ),
     ];
 
+    if (currentNote != null) {
+      currentNote.stop();
+    }
+    
     currentNote = Note.randomNote();
 
     var noteTypesForButtons = currentNote.noteType
-        .noteTypesExcludingThis(widget.difficulty.buttonsNeeded);
+        .noteTypesExcludingThis(widget.difficulty.buttonsNeeded - 1);
+    
+    noteTypesForButtons.add(currentNote.noteType);
+    noteTypesForButtons.shuffle();
 
     var buttons = noteTypesForButtons
         .map((e) => AnswerButton(
@@ -48,6 +56,9 @@ class _GameScreenState extends State<GameScreen> {
     setState(() {
       columnChildren = widgets;
     });
+    
+    currentNote.play();
+    
   }
 
   @override

@@ -44,8 +44,6 @@ extension Shuffle on List {
 extension Name on NoteType {
   List<NoteType> noteTypesExcludingThis(int count) => _allNotes
       .where((element) => element != this)
-      .toList()
-      .shuffled()
       .take(count)
       .toList();
 
@@ -95,6 +93,10 @@ class Note {
       autoStart: true,
       showNotification: false,
     );
+  }
+  
+  void stop() {
+    _player.stop();
   }
 
   static String dir = "assets/audios";
