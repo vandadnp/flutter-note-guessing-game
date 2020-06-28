@@ -65,7 +65,7 @@ class _GameScreenState extends State<GameScreen> {
 
     currentNote.play();
   }
-  
+
   void setupTimer() {
     gameTimer.start(
         seconds: 5,
@@ -96,6 +96,7 @@ class _GameScreenState extends State<GameScreen> {
     gameTimer.stop();
     currentNote.stop();
 
+    String answerText;
     Icon answerIcon;
     if (currentNote.noteType == noteType) {
       // correct answer
@@ -104,6 +105,7 @@ class _GameScreenState extends State<GameScreen> {
         color: Colors.green.shade400,
         size: 200.0,
       );
+      answerText = "That's correct!";
     } else {
       // wrong answer
       answerIcon = Icon(
@@ -111,6 +113,7 @@ class _GameScreenState extends State<GameScreen> {
         color: Colors.red,
         size: 200.0,
       );
+      answerText = "Correct answer: ${currentNote.noteType.name}";
     }
 
     List<Widget> widgets = [
@@ -118,6 +121,10 @@ class _GameScreenState extends State<GameScreen> {
         flex: 1,
       ),
       answerIcon,
+      Text(
+        answerText,
+        style: TextStyle(fontSize: 30.0),
+      ),
       Spacer(
         flex: 1,
       )
@@ -125,6 +132,10 @@ class _GameScreenState extends State<GameScreen> {
 
     setState(() {
       columnChildren = widgets;
+    });
+
+    Future.delayed(Duration(seconds: 2), () {
+      setupTimer();
     });
   }
 
