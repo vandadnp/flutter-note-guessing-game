@@ -25,16 +25,18 @@ class _GameScreenState extends State<GameScreen> {
   List<Widget> columnChildren = [];
 
   void processAnswer(NoteType noteType) {}
+  
+  void setupDifficulty(BuildContext context) {
+    difficulty = ModalRoute.of(context).settings.arguments;
+    if (difficulty == null) {
+      difficulty = Difficulty.beginner;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    // set difficulty
-    Difficulty difficulty = ModalRoute.of(context).settings.arguments;
-    if (difficulty != null) {
-      this.difficulty = difficulty;
-    } else {
-      this.difficulty = Difficulty.beginner;
-    }
+    
+    setupDifficulty(context);
 
     gameTimer.start(
         seconds: 5,

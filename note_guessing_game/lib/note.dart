@@ -44,9 +44,10 @@ extension Shuffle on List {
 extension Name on NoteType {
   List<NoteType> noteTypesExcludingThis(int count) => _allNotes
       .where((element) => element != this)
-      .take(count)
       .toList()
-      .shuffled();
+      .shuffled()
+      .take(count)
+      .toList();
 
   String get name {
     switch (this) {
