@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-typedef Ticker = void Function(int);
-
 class GameTimer {
   
   Timer _timer;
@@ -13,7 +11,9 @@ class GameTimer {
   }) {
     callback();
     _timer = Timer.periodic(Duration(seconds: seconds), (timer) {
-      callback();
+      if (timer.isActive) {
+        callback();
+      }
     });
   }
   
