@@ -94,7 +94,6 @@ class _GameScreenState extends State<GameScreen> {
 
   Future<void> processAnswer(NoteType noteType) async {
     gameTimer.stop();
-    currentNote.stop();
 
     String answerText;
     Icon answerIcon;
@@ -134,7 +133,7 @@ class _GameScreenState extends State<GameScreen> {
       columnChildren = widgets;
     });
 
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(Duration(seconds: 3), () {
       setupTimer();
     });
   }
