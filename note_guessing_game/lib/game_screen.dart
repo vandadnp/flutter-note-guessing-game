@@ -18,31 +18,37 @@ class _GameScreenState extends State<GameScreen> {
   Note currentNote;
 
   void setupButtonsAndPlayRandomNote() {
-    
     List<Widget> widgets = [
-      Text(
-        "🔊",
-        style: TextStyle(fontSize: 50),
+      Spacer(
+        flex: 1,
       ),
+      Icon(
+        Icons.music_note,
+        size: 200,
+        color: Colors.blue.shade100,
+      ),
+      Spacer(
+        flex: 1,
+      )
     ];
 
     if (currentNote != null) {
       currentNote.stop();
     }
-    
+
     currentNote = Note.randomNote();
 
     var noteTypesForButtons = currentNote.noteType
         .noteTypesExcludingThis(widget.difficulty.buttonsNeeded - 1);
-    
+
     noteTypesForButtons.add(currentNote.noteType);
     noteTypesForButtons.shuffle();
 
     var buttons = noteTypesForButtons
         .map((e) => AnswerButton(
             noteType: e,
-            onPressed: (noteType) {
-              processAnswer(noteType);
+            onPressed: (noteType) async {
+              await processAnswer(noteType);
             }))
         .toList();
 
@@ -56,15 +62,11 @@ class _GameScreenState extends State<GameScreen> {
     setState(() {
       columnChildren = widgets;
     });
-    
+
     currentNote.play();
-    
   }
-
-  @override
-  void initState() {
-    super.initState();
-
+  
+  void setupTimer() {
     gameTimer.start(
         seconds: 5,
         callback: () {
@@ -76,6 +78,12 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    setupTimer();
+  }
+
+  @override
   void dispose() {
     gameTimer.stop();
     Note.stopPlayer();
@@ -84,14 +92,53 @@ class _GameScreenState extends State<GameScreen> {
 
   List<Widget> columnChildren = [];
 
-  void processAnswer(NoteType noteType) {}
+  Future<void> processAnswer(NoteType noteType) async {
+    gameTimer.stop();
+    currentNote.stop();
+
+    Icon answerIcon;
+    if (currentNote.noteType == noteType) {
+      // correct answer
+      answerIcon = Icon(
+        Icons.check_box,
+        color: Colors.green.shade400,
+        size: 200.0,
+      );
+    } else {
+      // wrong answer
+      answerIcon = Icon(
+        Icons.clear,
+        color: Colors.red,
+        size: 200.0,
+      );
+    }
+
+    List<Widget> widgets = [
+      Spacer(
+        flex: 1,
+      ),
+      answerIcon,
+      Spacer(
+        flex: 1,
+      )
+    ];
+
+    setState(() {
+      columnChildren = widgets;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: TitleWidget()),
-      body: Center(
-        child: Column(children: columnChildren),
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            children: columnChildren,
+            crossAxisAlignment: CrossAxisAlignment.center,
+          ),
+        ),
       ),
     );
   }
@@ -108,6 +155,7 @@ class AnswerRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: buttons,
+      mainAxisAlignment: MainAxisAlignment.center,
     );
   }
 }
@@ -123,11 +171,20 @@ class AnswerButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
-      child: Text(noteType.name),
-      onPressed: () {
-        onPressed(noteType);
-      },
+    return SizedBox(
+      width: 160.0,
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: RaisedButton(
+          child: Text(
+            noteType.name,
+            style: TextStyle(fontSize: 70.0),
+          ),
+          onPressed: () {
+            onPressed(noteType);
+          },
+        ),
+      ),
     );
   }
 }
