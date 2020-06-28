@@ -143,31 +143,31 @@ const notes = [
     noteType: NoteType.a,
   ),
   Note(
-    fileName: "clean-A#-1.wav",
+    fileName: "clean-Asharp-1.wav",
     noteType: NoteType.aSharp,
   ),
   Note(
-    fileName: "clean-A#-2.wav",
+    fileName: "clean-Asharp-2.wav",
     noteType: NoteType.aSharp,
   ),
   Note(
-    fileName: "clean-A#-3.wav",
+    fileName: "clean-Asharp-3.wav",
     noteType: NoteType.aSharp,
   ),
   Note(
-    fileName: "clean-A#-4.wav",
+    fileName: "clean-Asharp-4.wav",
     noteType: NoteType.aSharp,
   ),
   Note(
-    fileName: "clean-A#-5.wav",
+    fileName: "clean-Asharp-5.wav",
     noteType: NoteType.aSharp,
   ),
   Note(
-    fileName: "clean-A#-6.wav",
+    fileName: "clean-Asharp-6.wav",
     noteType: NoteType.aSharp,
   ),
   Note(
-    fileName: "clean-A#-7.wav",
+    fileName: "clean-Asharp-7.wav",
     noteType: NoteType.aSharp,
   ),
   Note(
@@ -227,31 +227,31 @@ const notes = [
     noteType: NoteType.c,
   ),
   Note(
-    fileName: "clean-C#-1.wav",
+    fileName: "clean-Csharp-1.wav",
     noteType: NoteType.cSharp,
   ),
   Note(
-    fileName: "clean-C#-2.wav",
+    fileName: "clean-Csharp-2.wav",
     noteType: NoteType.cSharp,
   ),
   Note(
-    fileName: "clean-C#-3.wav",
+    fileName: "clean-Csharp-3.wav",
     noteType: NoteType.cSharp,
   ),
   Note(
-    fileName: "clean-C#-4.wav",
+    fileName: "clean-Csharp-4.wav",
     noteType: NoteType.cSharp,
   ),
   Note(
-    fileName: "clean-C#-5.wav",
+    fileName: "clean-Csharp-5.wav",
     noteType: NoteType.cSharp,
   ),
   Note(
-    fileName: "clean-C#-6.wav",
+    fileName: "clean-Csharp-6.wav",
     noteType: NoteType.cSharp,
   ),
   Note(
-    fileName: "clean-C#-7.wav",
+    fileName: "clean-Csharp-7.wav",
     noteType: NoteType.cSharp,
   ),
   Note(
@@ -283,31 +283,31 @@ const notes = [
     noteType: NoteType.d,
   ),
   Note(
-    fileName: "clean-D#-1.wav",
+    fileName: "clean-Dsharp-1.wav",
     noteType: NoteType.dSharp,
   ),
   Note(
-    fileName: "clean-D#-2.wav",
+    fileName: "clean-Dsharp-2.wav",
     noteType: NoteType.dSharp,
   ),
   Note(
-    fileName: "clean-D#-3.wav",
+    fileName: "clean-Dsharp-3.wav",
     noteType: NoteType.dSharp,
   ),
   Note(
-    fileName: "clean-D#-4.wav",
+    fileName: "clean-Dsharp-4.wav",
     noteType: NoteType.dSharp,
   ),
   Note(
-    fileName: "clean-D#-5.wav",
+    fileName: "clean-Dsharp-5.wav",
     noteType: NoteType.dSharp,
   ),
   Note(
-    fileName: "clean-D#-6.wav",
+    fileName: "clean-Dsharp-6.wav",
     noteType: NoteType.dSharp,
   ),
   Note(
-    fileName: "clean-D#-7.wav",
+    fileName: "clean-Dsharp-7.wav",
     noteType: NoteType.dSharp,
   ),
   Note(
@@ -367,31 +367,31 @@ const notes = [
     noteType: NoteType.f,
   ),
   Note(
-    fileName: "clean-F#-1.wav",
+    fileName: "clean-Fsharp-1.wav",
     noteType: NoteType.fSharp,
   ),
   Note(
-    fileName: "clean-F#-2.wav",
+    fileName: "clean-Fsharp-2.wav",
     noteType: NoteType.fSharp,
   ),
   Note(
-    fileName: "clean-F#-3.wav",
+    fileName: "clean-Fsharp-3.wav",
     noteType: NoteType.fSharp,
   ),
   Note(
-    fileName: "clean-F#-4.wav",
+    fileName: "clean-Fsharp-4.wav",
     noteType: NoteType.fSharp,
   ),
   Note(
-    fileName: "clean-F#-5.wav",
+    fileName: "clean-Fsharp-5.wav",
     noteType: NoteType.fSharp,
   ),
   Note(
-    fileName: "clean-F#-6.wav",
+    fileName: "clean-Fsharp-6.wav",
     noteType: NoteType.fSharp,
   ),
   Note(
-    fileName: "clean-F#-7.wav",
+    fileName: "clean-Fsharp-7.wav",
     noteType: NoteType.fSharp,
   ),
   Note(
@@ -423,31 +423,31 @@ const notes = [
     noteType: NoteType.g,
   ),
   Note(
-    fileName: "clean-G#-1.wav",
+    fileName: "clean-Gsharp-1.wav",
     noteType: NoteType.gSharp,
   ),
   Note(
-    fileName: "clean-G#-2.wav",
+    fileName: "clean-Gsharp-2.wav",
     noteType: NoteType.gSharp,
   ),
   Note(
-    fileName: "clean-G#-3.wav",
+    fileName: "clean-Gsharp-3.wav",
     noteType: NoteType.gSharp,
   ),
   Note(
-    fileName: "clean-G#-4.wav",
+    fileName: "clean-Gsharp-4.wav",
     noteType: NoteType.gSharp,
   ),
   Note(
-    fileName: "clean-G#-5.wav",
+    fileName: "clean-Gsharp-5.wav",
     noteType: NoteType.gSharp,
   ),
   Note(
-    fileName: "clean-G#-6.wav",
+    fileName: "clean-Gsharp-6.wav",
     noteType: NoteType.gSharp,
   ),
   Note(
-    fileName: "clean-G#-7.wav",
+    fileName: "clean-Gsharp-7.wav",
     noteType: NoteType.gSharp,
   ),
 ];
