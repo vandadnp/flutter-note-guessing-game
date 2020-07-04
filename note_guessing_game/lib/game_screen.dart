@@ -16,9 +16,36 @@ class GameScreen extends StatefulWidget {
 class _GameScreenState extends State<GameScreen> {
   GameTimer gameTimer = GameTimer();
   Note currentNote;
+  var correctAnswers = 0;
+  var wrongAnswers = 0;
 
   void setupButtonsAndPlayRandomNote() {
     List<Widget> widgets = [
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: [
+            Row(
+              children: <Widget>[
+                Icon(
+                  Icons.clear,
+                  color: Colors.red,
+                ),
+                Text(": ${wrongAnswers.toString()}"),
+              ],
+            ),
+            Spacer(
+              flex: 1,
+            ),
+            Row(
+              children: <Widget>[
+                Icon(Icons.check_box, color: Colors.green.shade400),
+                Text(": ${correctAnswers.toString()}"),
+              ],
+            )
+          ],
+        ),
+      ),
       Spacer(
         flex: 1,
       ),
@@ -98,6 +125,7 @@ class _GameScreenState extends State<GameScreen> {
     String answerText;
     Icon answerIcon;
     if (currentNote.noteType == noteType) {
+      correctAnswers += 1;
       // correct answer
       answerIcon = Icon(
         Icons.check_box,
@@ -107,6 +135,7 @@ class _GameScreenState extends State<GameScreen> {
       answerText = "That's correct!";
     } else {
       // wrong answer
+      wrongAnswers += 1;
       answerIcon = Icon(
         Icons.clear,
         color: Colors.red,
@@ -133,7 +162,7 @@ class _GameScreenState extends State<GameScreen> {
       columnChildren = widgets;
     });
 
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(seconds: 2), () {
       setupTimer();
     });
   }
