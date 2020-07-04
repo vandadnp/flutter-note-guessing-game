@@ -21,30 +21,9 @@ class _GameScreenState extends State<GameScreen> {
 
   void setupButtonsAndPlayRandomNote() {
     List<Widget> widgets = [
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: [
-            Row(
-              children: <Widget>[
-                Icon(
-                  Icons.clear,
-                  color: Colors.red,
-                ),
-                Text(": ${wrongAnswers.toString()}"),
-              ],
-            ),
-            Spacer(
-              flex: 1,
-            ),
-            Row(
-              children: <Widget>[
-                Icon(Icons.check_box, color: Colors.green.shade400),
-                Text(": ${correctAnswers.toString()}"),
-              ],
-            )
-          ],
-        ),
+      ResultsWidget(
+        wrongAnswers: wrongAnswers,
+        correctAnswers: correctAnswers,
       ),
       Spacer(
         flex: 1,
@@ -145,6 +124,10 @@ class _GameScreenState extends State<GameScreen> {
     }
 
     List<Widget> widgets = [
+      ResultsWidget(
+        wrongAnswers: wrongAnswers,
+        correctAnswers: correctAnswers,
+      ),
       Spacer(
         flex: 1,
       ),
@@ -157,7 +140,7 @@ class _GameScreenState extends State<GameScreen> {
         flex: 1,
       )
     ];
-    
+
     setState(() {
       columnChildren = widgets;
     });
@@ -178,6 +161,45 @@ class _GameScreenState extends State<GameScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
           ),
         ),
+      ),
+    );
+  }
+}
+
+class ResultsWidget extends StatelessWidget {
+  const ResultsWidget({
+    @required this.wrongAnswers,
+    @required this.correctAnswers,
+  });
+
+  final int wrongAnswers;
+  final int correctAnswers;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: [
+          Row(
+            children: <Widget>[
+              Icon(
+                Icons.clear,
+                color: Colors.red,
+              ),
+              Text(": ${wrongAnswers.toString()}"),
+            ],
+          ),
+          Spacer(
+            flex: 1,
+          ),
+          Row(
+            children: <Widget>[
+              Icon(Icons.check_box, color: Colors.green.shade400),
+              Text(": ${correctAnswers.toString()}"),
+            ],
+          )
+        ],
       ),
     );
   }
