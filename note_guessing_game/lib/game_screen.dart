@@ -157,7 +157,7 @@ class _GameScreenState extends State<GameScreen> {
         flex: 1,
       )
     ];
-
+    
     setState(() {
       columnChildren = widgets;
     });
