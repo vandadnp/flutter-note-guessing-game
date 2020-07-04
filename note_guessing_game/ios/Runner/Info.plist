@@ -11,8 +11,6 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>NotesGuessing</string>
-	<key>CFBundleDisplayName</key>
 	<string>Notes</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
